@@ -1,6 +1,7 @@
-# get gin package
+echo "get gin package"
 go get -u github.com/gin-gonic/gin
-# build 
+echo "build "
 go build main.go
-# move for bin folder
+echo "move for bin folder"
 mv main /bin
+echo "finish."
