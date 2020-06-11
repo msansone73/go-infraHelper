@@ -1,6 +1,6 @@
-// get gin package
+# get gin package
 go get -u github.com/gin-gonic/gin
-// build 
+# build 
 go build main.go
-// move for bin folder
+# move for bin folder
 mv main /bin
