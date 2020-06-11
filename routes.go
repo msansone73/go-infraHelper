@@ -8,7 +8,8 @@ import (
 
 	r.LoadHTMLGlob("templates/**/*")
 
-	r.GET("/", cmd_index)
+//	r.GET("/", cmd_index)
+	r.GET("/", cmd_home)
 	r.GET("/about", cmd_about)
 
 	r.GET("/ping", pong)
