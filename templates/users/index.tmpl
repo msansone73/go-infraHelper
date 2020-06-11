@@ -1,7 +1,20 @@
 {{ define "users/index.tmpl" }}
 <html><h1>
-	{{ .title }}
+	Infra Helper
 </h1>
-<p>Using users/index.tmpl</p>
+<p>{{ .cumprimento }}</p>
+<br>
+<table>
+	<tr>
+		<td>Nome</td>
+		<td>Idade</td>
+	</tr>
+	{{range .Students}}
+	<tr>
+		<td>{{.Name}}</td>   
+		<td>{{.Idade}}</td>   
+	</tr>
+	{{end}}
+</table>
 </html>
 {{ end }}

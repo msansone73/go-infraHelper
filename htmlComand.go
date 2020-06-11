@@ -1,20 +1,43 @@
 package main
 
 import (
-	//"fmt"
+	"encoding/json"
+	_ "fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
+type Student struct {
+	Id    int
+	Name  string
+	Idade int
+}
+
+const jsondata = `[
+  {
+    "id": 1,
+	"name": "Mary",
+	"idade": 25
+	
+  },
+  {
+    "id": 2,
+	"name": "John",
+	"idade": 40
+  }
+]`
 
 func cmd_index(c *gin.Context) {
 
+	var students []Student
+	if err := json.Unmarshal([]byte(jsondata), &students); err != nil {
+		panic(err)
+	}
 	response := "Bem vindo, marcio"
-
-	//c.Data(http.StatusOK, "text/html; charset=utf-8", []byte(response))
 	c.HTML(http.StatusOK, "users/index.tmpl", gin.H{
-		"title": response,
+		"cumprimento": response,
+		"Students":    students,
 	})
 
 }
