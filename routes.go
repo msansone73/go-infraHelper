@@ -1,57 +1,19 @@
 package main 
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
-	"net/http"
-	"bytes"
-	"log"
-	"os/exec"	
 	)
 
-func setRotas(r *gin.Engine){
+	func setRotas(r *gin.Engine){
 
+	r.LoadHTMLGlob("templates/**/*")
 
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
-	})
+	r.GET("/", cmd_index)
+	r.GET("/about", cmd_about)
 
-	r.GET("/ps", func(c *gin.Context) {
-
-		cmd := exec.Command("ps")
-		var out bytes.Buffer		
-		cmd.Stdout = &out
-	
-		err := cmd.Run()
-		if err != nil {
-			log.Fatal(err)
-		}
-		c.String(http.StatusOK, fmt.Sprintf((out.String())))
-	})
-
-	r.GET("/ls", func(c *gin.Context) {
-
-		cmd := exec.Command("ls")
-		var out bytes.Buffer		
-		cmd.Stdout = &out
-	
-		err := cmd.Run()
-		if err != nil {
-			log.Fatal(err)
-		}
-		c.String(http.StatusOK, fmt.Sprintf((out.String())))
-	})
-
-	r.GET("/welcome", func(c *gin.Context) {
-		firstname := c.DefaultQuery("firstname", "Guest")
-		lastname := c.Query("lastname") // shortcut for c.Request.URL.Query().Get("lastname")
-
-		c.String(http.StatusOK, "Hello %s %s", firstname, lastname)
-	})	
-
-
-
+	r.GET("/ping", pong)
+	r.GET("/ps", cmd_ps)
+	r.GET("/ls", cmd_ls)
+	r.GET("/welcome", cmd_welcome)	
 	
 }
