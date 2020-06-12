@@ -3,13 +3,13 @@ package main
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
-	"github.com/msansone73/go-infraHelper/Parametro"
+	"github.com/msansone73/go-infraHelper/Parametros"
 )
 
 func main()  {
 
 	fmt.Println("starting service...")
-	fmt.Println("USER=", Parametro.GetParametro("user"))
+	fmt.Println("USER=", Parametros.GetParametro("user"))
 
 	r := gin.Default()
 	setRotas(r)
