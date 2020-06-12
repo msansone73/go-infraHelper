@@ -1,6 +1,9 @@
 #echo "get gin package"
-go get -u github.com/gin-gonic/gin
+go get github.com/gin-gonic/gin
 go get gopkg.in/ini.v1
+go get github.com/gin-gonic/autotls
+go get golang.org/x/crypto/acme/autocert
+
 echo "build "
 go build go-infraHelper
 echo "move for bin folder"

@@ -3,8 +3,10 @@ package main
 import (
 	"fmt"
 	"projects/go-infraHelper/parametro"
-
+	"github.com/gin-gonic/autotls"
+	"golang.org/x/crypto/acme/autocert"
 	"github.com/gin-gonic/gin"
+	"log"
 )
 
 func main()  {
@@ -16,6 +18,14 @@ func main()  {
 	r := gin.Default()
 	setRotas(r)
 
-	r.Run() // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
+	m := autocert.Manager{
+		Prompt:     autocert.AcceptTOS,
+		HostPolicy: autocert.HostWhitelist("msansone.com.br"),
+		Cache:      autocert.DirCache("/var/www/.cache"),
+	}
+
+	log.Fatal(autotls.RunWithManager(r, &m))
+
+	r.Run(":443") // listen and serve on 0.0.0.0:8080 (for windows "localhost:8080")
 	
 }
