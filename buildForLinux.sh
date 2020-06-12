@@ -5,7 +5,7 @@ go get github.com/gin-gonic/autotls
 go get golang.org/x/crypto/acme/autocert
 
 echo "build "
-go build go-infraHelper
+go build projects/go-infraHelper
 echo "move for bin folder"
 mv go-infraHelper /bin
 echo "finish."
