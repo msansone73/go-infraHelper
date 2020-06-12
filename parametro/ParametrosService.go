@@ -1,9 +1,8 @@
-package parametro
+package Parametro
 
 import (
     "fmt"
     "os"
-
     "gopkg.in/ini.v1"
 )
 

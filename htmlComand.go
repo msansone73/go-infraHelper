@@ -1,15 +1,13 @@
 package main
 
 import (
-	_ "encoding/json"
-	_ "fmt"
 	"net/http"
-	"projects/go-infraHelper/repository"
 	"github.com/gin-gonic/gin"
+	"github.com/msansone73/go-infraHelper/Repositorio"
 )
 
 func cmd_home(c *gin.Context)  {
-	projetos := repositorio.FindAll()
+	projetos := Repositorio.FindAll()
 
 	response := "Bem vindo, marcio"
 	c.HTML(http.StatusOK, "users/index.tmpl", gin.H{
