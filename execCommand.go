@@ -2,13 +2,14 @@ package main
 
 
 import (
-	"fmt"
-	"github.com/gin-gonic/gin"
-	"net/http"
 	"bytes"
 	"log"
-	"os/exec"	
-	)
+	"net/http"
+	"os/exec"
+	"strings"
+
+	"github.com/gin-gonic/gin"
+)
 
 
 func cmd_ps(c *gin.Context) {
@@ -21,7 +22,13 @@ func cmd_ps(c *gin.Context) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	c.String(http.StatusOK, fmt.Sprintf((out.String())))
+	//c.String(http.StatusOK, fmt.Sprintf((out.String())))
+	response := "Bem vindo, marcio"
+	resultado:= strings.TrimSpace(out.String())
+	c.HTML(http.StatusOK, "main/list_ls.tmpl", gin.H{
+		"cumprimento": response,
+		"resultado": resultado,
+	})	
 }
 
 func cmd_ls(c *gin.Context) {
@@ -34,5 +41,12 @@ func cmd_ls(c *gin.Context) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	c.String(http.StatusOK, fmt.Sprintf((out.String())))
+	//c.String(http.StatusOK, fmt.Sprintf((out.String())))
+
+	response := "Bem vindo, marcio"
+	resultado:= strings.TrimSpace(out.String())
+	c.HTML(http.StatusOK, "main/list_ls.tmpl", gin.H{
+		"cumprimento": response,
+		"resultado": resultado,
+	})
 }
