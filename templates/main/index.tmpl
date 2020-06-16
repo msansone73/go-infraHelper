@@ -1,0 +1,21 @@
+{{ define "main/index.tmpl" }}
+{{ template "header.html" }}
+		<div>
+		<h1>infra Helper</h1>
+		<p>{{ .cumprimento }}</p>
+		<br>
+		<table>
+			<tr>
+				<td>Nome</td>
+				<td>Idade</td>
+			</tr>
+			{{range .Projetos}}
+			<tr>
+				<td>{{.Nome}}</td>   
+				<td>{{.Descricao}}</td>   
+			</tr>
+			{{end}}
+		</table>
+		</div>
+{{ template "footer.html" }}
+{{ end }}
